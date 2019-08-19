@@ -350,7 +350,7 @@ class DatePicker extends Component {
         style={[Style.dateTouch, style]}
         underlayColor={'transparent'}
         onPress={this.onPressDate}
-        accessible={false}>
+        testID={testID}>
         <View style={[Style.dateTouchBody, customStyles.dateTouchBody]}>
           {
             !this.props.hideText ?
@@ -382,7 +382,6 @@ class DatePicker extends Component {
                   <Animated.View
                     style={[Style.datePickerCon, {height: this.state.animatedHeight}, customStyles.datePickerCon]}>
                     <View
-                      testID={testID}
                       pointerEvents={this.state.allowPointerEvents ? 'auto' : 'none'}>
                       <DatePickerIOS
                         date={this.state.date}
