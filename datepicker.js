@@ -381,9 +381,10 @@ class DatePicker extends Component {
                   accessible={false}>
                   <Animated.View
                     style={[Style.datePickerCon, {height: this.state.animatedHeight}, customStyles.datePickerCon]}>
-                    <View pointerEvents={this.state.allowPointerEvents ? 'auto' : 'none'}>
+                    <View
+                      testID={testID}
+                      pointerEvents={this.state.allowPointerEvents ? 'auto' : 'none'}>
                       <DatePickerIOS
-                        testID={testID}
                         date={this.state.date}
                         mode={mode}
                         minimumDate={minDate && this.getDate(minDate)}
