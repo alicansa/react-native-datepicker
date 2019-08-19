@@ -50,9 +50,9 @@ class DatePicker extends Component {
     this.setModalVisible = this.setModalVisible.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.date !== this.props.date) {
-      this.setState({date: this.getDate(nextProps.date)});
+  componentDidUpdate(prevProps) {
+    if (prevProps.date !== this.props.date) {
+      this.setState({date: this.getDate(this.props.date)});
     }
   }
 
@@ -118,7 +118,6 @@ class DatePicker extends Component {
   getDate(date = this.props.date) {
     const {mode, minDate, maxDate, format = FORMATS[mode]} = this.props;
 
-    // date默认值
     if (!date) {
       let now = new Date();
       if (minDate) {
@@ -274,8 +273,6 @@ class DatePicker extends Component {
           mode: androidMode
         }).then(this.onDatePicked);
       } else if (mode === 'time') {
-        // 选时间
-
         let timeMoment = Moment(this.state.date);
 
         TimePickerAndroid.open({
@@ -285,8 +282,6 @@ class DatePicker extends Component {
           mode: androidMode
         }).then(this.onTimePicked);
       } else if (mode === 'datetime') {
-        // 选日期和时间
-
         DatePickerAndroid.open({
           date: this.state.date,
           minDate: minDate && this.getDate(minDate),
@@ -355,8 +350,7 @@ class DatePicker extends Component {
         style={[Style.dateTouch, style]}
         underlayColor={'transparent'}
         onPress={this.onPressDate}
-        testID={testID}
-      >
+        accessible={false}>
         <View style={[Style.dateTouchBody, customStyles.dateTouchBody]}>
           {
             !this.props.hideText ?
@@ -372,26 +366,24 @@ class DatePicker extends Component {
             animationType="none"
             visible={this.state.modalVisible}
             supportedOrientations={SUPPORTED_ORIENTATIONS}
-            onRequestClose={() => {this.setModalVisible(false);}}
-          >
+            onRequestClose={() => {this.setModalVisible(false);}}>
             <View
-              style={{flex: 1}}
-            >
+              style={{flex: 1}}>
               <TouchableComponent
                 style={Style.datePickerMask}
                 activeOpacity={1}
                 underlayColor={'#00000077'}
                 onPress={this.onPressMask}
-              >
+                accessible={false}>
                 <TouchableComponent
                   underlayColor={'#fff'}
                   style={{flex: 1}}
-                >
+                  accessible={false}>
                   <Animated.View
-                    style={[Style.datePickerCon, {height: this.state.animatedHeight}, customStyles.datePickerCon]}
-                  >
+                    style={[Style.datePickerCon, {height: this.state.animatedHeight}, customStyles.datePickerCon]}>
                     <View pointerEvents={this.state.allowPointerEvents ? 'auto' : 'none'}>
                       <DatePickerIOS
+                        testID={testID}
                         date={this.state.date}
                         mode={mode}
                         minimumDate={minDate && this.getDate(minDate)}
@@ -400,19 +392,17 @@ class DatePicker extends Component {
                         minuteInterval={minuteInterval}
                         timeZoneOffsetInMinutes={timeZoneOffsetInMinutes ? timeZoneOffsetInMinutes : null}
                         style={[Style.datePicker, customStyles.datePicker]}
-                        locale={locale}
-                      />
+                        locale={locale}/>
                     </View>
                     <TouchableComponent
                       underlayColor={'transparent'}
                       onPress={this.onPressCancel}
                       style={[Style.btnText, Style.btnCancel, customStyles.btnCancel]}
                       testID={cancelBtnTestID}
-                    >
+                      accesibilityLabel={cancelBtnTestID}>
                       <Text
                         allowFontScaling={allowFontScaling}
-                        style={[Style.btnTextText, Style.btnTextCancel, customStyles.btnTextCancel]}
-                      >
+                        style={[Style.btnTextText, Style.btnTextCancel, customStyles.btnTextCancel]}>
                         {cancelBtnText}
                       </Text>
                     </TouchableComponent>
@@ -421,10 +411,9 @@ class DatePicker extends Component {
                       onPress={this.onPressConfirm}
                       style={[Style.btnText, Style.btnConfirm, customStyles.btnConfirm]}
                       testID={confirmBtnTestID}
-                    >
+                      accesibilityLabel={confirmBtnTestID}>
                       <Text allowFontScaling={allowFontScaling}
-                            style={[Style.btnTextText, customStyles.btnTextConfirm]}
-                      >
+                        style={[Style.btnTextText, customStyles.btnTextConfirm]}>
                         {confirmBtnText}
                       </Text>
                     </TouchableComponent>

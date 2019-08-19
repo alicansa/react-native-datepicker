@@ -28,10 +28,10 @@
     "moment": "^2.22.0"
   },
   "devDependencies": {
-    "babel-core": "^6.5.2",
+    "@babel/core": "^7.1.2",
+    "@babel/runtime": "^7.1.2",
     "babel-eslint": "^7.2.3",
-    "babel-jest": "21.2.0",
-    "babel-preset-react-native": "4.0.0",
+    "babel-jest": "^23.6.0",
     "coveralls": "^2.11.9",
     "cz-conventional-changelog": "^1.2.0",
     "enzyme": "^3.1.0",
@@ -39,14 +39,15 @@
     "eslint": "^3.19.0",
     "eslint-plugin-react": "^7.0.1",
     "inquirer": "^3.0.5",
-    "jest": "21.2.1",
+    "jest": "^23.6.0",
     "jsdom": "^11.3.0",
     "jsdom-global": "^3.0.2",
+    "metro-react-native-babel-preset": "^0.47.1",
     "pre-commit": "^1.1.3",
-    "react": "16.0.0-beta.5",
-    "react-dom": "16.0.0-beta.5",
-    "react-native": "0.49.3",
-    "react-test-renderer": "16.0.0-beta.5"
+    "react": "^16.8.3",
+    "react-dom": "^16.2.0",
+    "react-native": "^0.59.8",
+    "react-test-renderer": "^16.2.0"
   },
   "config": {
     "commitizen": {
@@ -58,7 +59,10 @@
     "testPathIgnorePatterns": [
       "/node_modules/",
       "tools/"
-    ]
+    ],
+    "transform": {
+      "^.+\\.(js)$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
+    }
   },
   "pre-commit": [
     "lint"
