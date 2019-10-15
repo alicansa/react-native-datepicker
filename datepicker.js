@@ -350,7 +350,8 @@ class DatePicker extends Component {
         style={[Style.dateTouch, style]}
         underlayColor={'transparent'}
         onPress={this.onPressDate}
-        testID={testID}>
+        testID={testID}
+        accesibilityLabel={testID}>
         <View style={[Style.dateTouchBody, customStyles.dateTouchBody]}>
           {
             !this.props.hideText ?
