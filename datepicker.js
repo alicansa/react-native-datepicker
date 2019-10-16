@@ -332,6 +332,7 @@ class DatePicker extends Component {
       cancelBtnText,
       confirmBtnText,
       TouchableComponent,
+      accessibilityLabel,
       testID,
       cancelBtnTestID,
       confirmBtnTestID,
@@ -351,7 +352,7 @@ class DatePicker extends Component {
         underlayColor={'transparent'}
         onPress={this.onPressDate}
         testID={testID}
-        accessibilityLabel={testID}>
+        accessibilityLabel={accessibilityLabel}>
         <View style={[Style.dateTouchBody, customStyles.dateTouchBody]}>
           {
             !this.props.hideText ?
@@ -399,8 +400,7 @@ class DatePicker extends Component {
                       underlayColor={'transparent'}
                       onPress={this.onPressCancel}
                       style={[Style.btnText, Style.btnCancel, customStyles.btnCancel]}
-                      testID={cancelBtnTestID}
-                      accessibilityLabel={cancelBtnTestID}>
+                      testID={cancelBtnTestID}>
                       <Text
                         allowFontScaling={allowFontScaling}
                         style={[Style.btnTextText, Style.btnTextCancel, customStyles.btnTextCancel]}>
@@ -411,8 +411,7 @@ class DatePicker extends Component {
                       underlayColor={'transparent'}
                       onPress={this.onPressConfirm}
                       style={[Style.btnText, Style.btnConfirm, customStyles.btnConfirm]}
-                      testID={confirmBtnTestID}
-                      accessibilityLabel={confirmBtnTestID}>
+                      testID={confirmBtnTestID}>
                       <Text allowFontScaling={allowFontScaling}
                         style={[Style.btnTextText, customStyles.btnTextConfirm]}>
                         {confirmBtnText}
@@ -478,7 +477,9 @@ DatePicker.propTypes = {
   modalOnResponderTerminationRequest: PropTypes.func,
   is24Hour: PropTypes.bool,
   getDateStr: PropTypes.func,
-  locale: PropTypes.string
+  locale: PropTypes.string,
+  accessibilityLabel: PropTypes.string,
+  testID: PropTypes.string
 };
 
 export default DatePicker;
