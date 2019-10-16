@@ -351,7 +351,7 @@ class DatePicker extends Component {
         underlayColor={'transparent'}
         onPress={this.onPressDate}
         testID={testID}
-        accesibilityLabel={testID}>
+        accessibilityLabel={testID}>
         <View style={[Style.dateTouchBody, customStyles.dateTouchBody]}>
           {
             !this.props.hideText ?
@@ -400,7 +400,7 @@ class DatePicker extends Component {
                       onPress={this.onPressCancel}
                       style={[Style.btnText, Style.btnCancel, customStyles.btnCancel]}
                       testID={cancelBtnTestID}
-                      accesibilityLabel={cancelBtnTestID}>
+                      accessibilityLabel={cancelBtnTestID}>
                       <Text
                         allowFontScaling={allowFontScaling}
                         style={[Style.btnTextText, Style.btnTextCancel, customStyles.btnTextCancel]}>
@@ -412,7 +412,7 @@ class DatePicker extends Component {
                       onPress={this.onPressConfirm}
                       style={[Style.btnText, Style.btnConfirm, customStyles.btnConfirm]}
                       testID={confirmBtnTestID}
-                      accesibilityLabel={confirmBtnTestID}>
+                      accessibilityLabel={confirmBtnTestID}>
                       <Text allowFontScaling={allowFontScaling}
                         style={[Style.btnTextText, customStyles.btnTextConfirm]}>
                         {confirmBtnText}
