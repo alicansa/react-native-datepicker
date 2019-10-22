@@ -332,6 +332,7 @@ class DatePicker extends Component {
       cancelBtnText,
       confirmBtnText,
       TouchableComponent,
+      accessible,
       accessibilityLabel,
       testID,
       cancelBtnTestID,
@@ -352,6 +353,7 @@ class DatePicker extends Component {
         underlayColor={'transparent'}
         onPress={this.onPressDate}
         testID={testID}
+        accessible={accessible}
         accessibilityLabel={accessibilityLabel}>
         <View style={[Style.dateTouchBody, customStyles.dateTouchBody]}>
           {
@@ -479,7 +481,8 @@ DatePicker.propTypes = {
   getDateStr: PropTypes.func,
   locale: PropTypes.string,
   accessibilityLabel: PropTypes.string,
-  testID: PropTypes.string
+  testID: PropTypes.string,
+  accessible: PropTypes.bool
 };
 
 export default DatePicker;
